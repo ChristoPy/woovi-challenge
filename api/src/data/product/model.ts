@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import db from "../core/database";
+import db from "../../database";
 
 export const ProductSchema = new Schema({
   name: { type: String, required: true },
@@ -12,6 +12,7 @@ export const ProductSchema = new Schema({
   quantity: { type: Number, required: true },
 });
 
+export type Category = 'ELECTRONICS' | 'FASHION' | 'HOME' | 'GROCERY' | 'SPORTS' | 'TOYS' | 'BOOKS' | 'OTHER';
 
 export interface ProductParams {
   name: string;
