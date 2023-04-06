@@ -15,7 +15,7 @@ export default function ProductsSection() {
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
         {
           products.map(product => (
-            <ProductCard product={product} key={product._id}/>
+            <ProductCard product={product} key={product._id} />
           ))
         }
       </div>

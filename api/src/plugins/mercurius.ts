@@ -21,7 +21,7 @@ const resolvers = {
  * @see https://github.com/mercurius-js/mercurius
  */
 export default fp<MercuriusOptions>(async (fastify) => {
-  
+
   fastify.register(mercurius, {
     schema,
     resolvers,

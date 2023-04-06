@@ -15,9 +15,9 @@ interface StoreProviderProps {
 
 export const StoreContext = createContext<StoreContextValue>({
   store: { products: [], shoppingCart: { items: [] } },
-  addToCart: () => {},
-  removeFromCart: () => {},
-  clearCart: () => {},
+  addToCart: () => { },
+  removeFromCart: () => { },
+  clearCart: () => { },
   isOnCart: () => false,
 });
 
