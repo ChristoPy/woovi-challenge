@@ -1,4 +1,13 @@
 export default `
+directive @auth(
+  requires: Role = BUSINESS,
+) on OBJECT | FIELD_DEFINITION
+
+enum Role {
+  BUSINESS
+  VISITOR
+}
+
 scalar BigInt
 
 enum Category {
@@ -31,8 +40,8 @@ type Query {
 }
 
 type Mutation {
-  createProduct(name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product!
+  createProduct(name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   updateProduct(_id: String!, name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product!
-  deleteProduct(_id: String!): Product
+  deleteProduct(_id: String!): Product @auth(requires: USER)
 }
 `

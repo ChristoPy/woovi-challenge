@@ -23,10 +23,13 @@
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
+    "jsonwebtoken": "^9.0.0",
     "mercurius": "^12.2.0",
+    "mercurius-auth": "^4.0.0",
     "mongoose": "^7.0.3"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.0.0",
     "@types/tap": "^15.0.5",
     "concurrently": "^7.0.0",
