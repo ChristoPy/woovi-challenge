@@ -1,4 +1,6 @@
-import { MouseEvent } from "react"
+import { MouseEvent, useContext } from "react"
+import { StoreContext } from "../../providers/store"
+import { formatMoney } from "../../core/currency"
 
 interface Product {
   _id: string
@@ -12,9 +14,11 @@ interface ProductCardParams {
 }
 
 export default function ProductCard({ product }: ProductCardParams) {
-  let onShoppingCart = false
+  const { addToCart, isOnCart } = useContext(StoreContext);
+
   const onclick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+    addToCart(product._id, 1)
   }
 
   return (
@@ -25,12 +29,12 @@ export default function ProductCard({ product }: ProductCardParams) {
           <p>{product.name}</p>
         </div>
 
-        <p className="pt-1 pb-3 text-gray-900">{product.price}</p>
+        <p className="pt-1 pb-3 text-gray-900">{formatMoney(product.price)}</p>
 
         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition-all duration-300 ease-in-out w-full" onClick={onclick}>
-          <span className="w-full text-center">Add to Cart</span>
+          <span className="w-full text-center">Por no Carrinho</span>
           {
-            onShoppingCart ? (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24"
+            isOnCart(product._id) ? (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
             </svg>) : (
@@ -40,10 +44,7 @@ export default function ProductCard({ product }: ProductCardParams) {
               </svg>
             )
           }
-
-
         </button>
-
       </a>
     </div>
   )

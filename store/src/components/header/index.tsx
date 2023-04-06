@@ -1,3 +1,5 @@
+import Badge from "./badge";
+
 export default function Header() {
   return (
     <nav className="w-full z-30 top-0 py-1">
@@ -27,6 +29,7 @@ export default function Header() {
           </a>
 
           <a className="pl-3 inline-block no-underline hover:text-black" href="#">
+            <Badge />
             <svg className="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24" viewBox="0 0 24 24">
               <path
