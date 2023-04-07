@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <section
@@ -11,7 +13,7 @@ export default function Hero() {
       <div className="container mx-auto">
         <div className="flex flex-col w-full lg:w-1/2 justify-center items-start  px-6 tracking-wide">
           <h1 className="text-black text-2xl my-4">Kit ZigZag</h1>
-          <a className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Ver</a>
+          <Link className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" to="#">Ver</Link>
         </div>
       </div>
     </section>

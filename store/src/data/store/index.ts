@@ -13,6 +13,8 @@ export interface Product {
 export interface ShoppingCartItem {
   productId: string;
   quantity: number;
+  name: string;
+  price: number;
 }
 
 export interface ShoppingCart {
@@ -20,6 +22,6 @@ export interface ShoppingCart {
 }
 
 export interface Store {
-  products: [];
+  products: Product[];
   shoppingCart: ShoppingCart;
 }

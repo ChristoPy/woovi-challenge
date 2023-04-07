@@ -1,12 +1,18 @@
 import { MouseEvent, useContext } from "react"
 import { StoreContext } from "../../providers/store"
 import { formatMoney } from "../../core/currency"
+import Button from "../button"
 
-interface Product {
+export interface Product {
   _id: string
   name: string
   price: number
+  description: string
+  category: string
   images: string[]
+  createdAt: number
+  updatedAt: number
+  quantity: number
 }
 
 interface ProductCardParams {
@@ -31,8 +37,7 @@ export default function ProductCard({ product }: ProductCardParams) {
 
         <p className="pt-1 pb-3 text-gray-900">{formatMoney(product.price)}</p>
 
-        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition-all duration-300 ease-in-out w-full" onClick={onclick}>
-          <span className="w-full text-center">Por no Carrinho</span>
+        <Button full text="Por no Carrinho" onClick={onclick} iconRight={<>
           {
             isOnCart(product._id) ? (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24">
@@ -44,7 +49,7 @@ export default function ProductCard({ product }: ProductCardParams) {
               </svg>
             )
           }
-        </button>
+        </>} />
       </a>
     </div>
   )

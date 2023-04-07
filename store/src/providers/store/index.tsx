@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { Store, Product, ShoppingCartItem } from '../data/store';
+import { Store, Product, ShoppingCartItem } from '../../data/store';
 
 interface StoreContextValue {
   store: Store;
@@ -7,6 +7,8 @@ interface StoreContextValue {
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
   isOnCart: (productId: string) => boolean;
+  setProducts: (products: Product[]) => void;
+  setQuantity: (productId: string, quantity: number) => void;
 }
 
 interface StoreProviderProps {
@@ -19,6 +21,8 @@ export const StoreContext = createContext<StoreContextValue>({
   removeFromCart: () => { },
   clearCart: () => { },
   isOnCart: () => false,
+  setProducts: () => { },
+  setQuantity: () => { },
 });
 
 const initialStore: Store = {
@@ -38,6 +42,8 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
       const updatedItem: ShoppingCartItem = {
         ...existingItem,
         quantity: existingItem.quantity + quantity,
+        name: existingItem.name,
+        price: existingItem.price,
       };
 
       const updatedItems = store.shoppingCart.items.map((item) =>
@@ -49,9 +55,12 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
         shoppingCart: { items: updatedItems },
       });
     } else {
+      const product = store.products.find((product) => product._id === productId)!;
       const newItem: ShoppingCartItem = {
         productId: productId,
         quantity,
+        name: product.name,
+        price: product.price,
       };
 
       setStore({
@@ -87,12 +96,37 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
     );
   };
 
+  const setQuantity = (productId: string, quantity: number) => {
+    if (quantity === 0) {
+      removeFromCart(productId);
+      return;
+    }
+
+    const updatedItems = store.shoppingCart.items.map((item) =>
+      item.productId === productId ? { ...item, quantity } : item
+    );
+
+    setStore({
+      ...store,
+      shoppingCart: { items: updatedItems },
+    });
+  };
+
+  const setProducts = (products: Product[]) => {
+    setStore({
+      ...store,
+      products,
+    });
+  };
+
   const contextValue: StoreContextValue = {
     store,
     addToCart,
     removeFromCart,
     clearCart,
     isOnCart,
+    setProducts,
+    setQuantity
   };
 
   return (
