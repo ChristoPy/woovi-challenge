@@ -2,7 +2,7 @@ import { MouseEvent, useContext } from "react"
 import { StoreContext } from "../../providers/store"
 import { formatMoney } from "../../core/currency"
 
-interface Product {
+export interface Product {
   _id: string
   name: string
   price: number

@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { Store, Product, ShoppingCartItem } from '../data/store';
+import { Store, Product, ShoppingCartItem } from '../../data/store';
 
 interface StoreContextValue {
   store: Store;
@@ -7,6 +7,7 @@ interface StoreContextValue {
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
   isOnCart: (productId: string) => boolean;
+  setProducts: (products: Product[]) => void;
 }
 
 interface StoreProviderProps {
@@ -19,6 +20,7 @@ export const StoreContext = createContext<StoreContextValue>({
   removeFromCart: () => { },
   clearCart: () => { },
   isOnCart: () => false,
+  setProducts: () => { },
 });
 
 const initialStore: Store = {
@@ -87,12 +89,20 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
     );
   };
 
+  const setProducts = (products: Product[]) => {
+    setStore({
+      ...store,
+      products,
+    });
+  };
+
   const contextValue: StoreContextValue = {
     store,
     addToCart,
     removeFromCart,
     clearCart,
     isOnCart,
+    setProducts,
   };
 
   return (

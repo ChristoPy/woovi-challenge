@@ -20,6 +20,6 @@ export interface ShoppingCart {
 }
 
 export interface Store {
-  products: [];
+  products: Product[];
   shoppingCart: ShoppingCart;
 }
