@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { StoreContext } from "../../providers/store";
+import { StoreContext } from "../../../providers/store";
 
 export default function Badge() {
   const { store } = useContext(StoreContext);
