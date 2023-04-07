@@ -1,14 +1,28 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from '../button';
 import { StoreContext } from '../../providers/store';
 import { ShoppingCartItem } from '../../data/store';
+import { formatMoney } from '../../core/currency';
 
 function ProductList() {
   const { store, setQuantity } = useContext(StoreContext);
+  const [total, setTotal] = useState(0);
+
+  const caculateTotal = () => {
+    return store.shoppingCart.items.reduce((acc, item) => {
+      return acc + (item.price * item.quantity);
+    }, 0)
+  };
+
 
   const handleQuantityChange = (productId: string, quantity: number) => {
     setQuantity(productId, quantity);
   };
+
+
+  useEffect(() => {
+    setTotal(caculateTotal());
+  }, [store.shoppingCart.items]);
 
   return (
     <section className="py-8 px-4">
@@ -20,7 +34,10 @@ function ProductList() {
               key={product.productId}
               className="flex items-center justify-between border-b py-4"
             >
-              <p>{product.name}</p>
+              <div>
+                <p>{product.name}</p>
+                <p>{formatMoney(product.price)}</p>
+              </div>
               <div className="flex justify-center items-center space-x-2">
                 <Button
                   text="-"
@@ -39,6 +56,9 @@ function ProductList() {
             </li>
           ))}
         </ul>
+        <div className="flex justify-end items-center mt-4">
+          <p className="text-2xl font-bold">Total: {formatMoney(total)}</p>
+        </div>
       </div>
     </section>
   );

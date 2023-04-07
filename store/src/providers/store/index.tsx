@@ -43,6 +43,7 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
         ...existingItem,
         quantity: existingItem.quantity + quantity,
         name: existingItem.name,
+        price: existingItem.price,
       };
 
       const updatedItems = store.shoppingCart.items.map((item) =>
@@ -59,6 +60,7 @@ export const StoreProvider = ({ children }: StoreProviderProps) => {
         productId: productId,
         quantity,
         name: product.name,
+        price: product.price,
       };
 
       setStore({
