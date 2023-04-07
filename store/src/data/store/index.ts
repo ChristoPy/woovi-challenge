@@ -13,6 +13,7 @@ export interface Product {
 export interface ShoppingCartItem {
   productId: string;
   quantity: number;
+  name: string;
 }
 
 export interface ShoppingCart {

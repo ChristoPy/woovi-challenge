@@ -2,9 +2,10 @@ import { OperationType, graphql } from "relay-runtime"
 import ProductCard from "../product-card"
 import { useLazyLoadQuery } from "react-relay"
 import { Product } from "../product-card/index"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useTransition, animated } from 'react-spring'
 import Loading from "../loading"
+import { StoreContext } from "../../providers/store"
 
 interface ProductsSectionQuery extends OperationType {
   readonly response: ProductsSectionQueryResult;
@@ -35,6 +36,7 @@ export default function ProductsSection() {
     {}
   )
 
+  const { setProducts } = useContext(StoreContext)
   const [showSpinner, setShowSpinner] = useState<boolean>(true);
   const transition = useTransition(showSpinner, {
     from: { opacity: 1 },
@@ -44,6 +46,7 @@ export default function ProductsSection() {
 
   useEffect(() => {
     if (products) {
+      setProducts(products)
       setShowSpinner(false);
     }
   }, [products]);
@@ -51,7 +54,7 @@ export default function ProductsSection() {
   return (
     <section className="py-8">
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-      {transition((style, item) => 
+        {transition((style, item) =>
           item ? (
             <animated.div style={style}>
               <Loading />
