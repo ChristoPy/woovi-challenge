@@ -3,7 +3,7 @@ Lojja Store is the front-end component of the Lojja e-commerce project. It provi
 
 ## Getting Started
 ### Prerequisites
-To run the Lojja API, you will need the following software installed on your machine:
+To run the Lojja Store, you will need the following software installed on your machine:
 
 * Node.js (version 14 or later)
 
