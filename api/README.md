@@ -1,23 +1,36 @@
-# Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
-This project was bootstrapped with Fastify-CLI.
+# Lojja API
+Lojja API is the back-end component of the Lojja e-commerce project. It provides a GraphQL API that allows users to browse products, add them to their cart, and purchase them using the PIX payment method. It also provides an admin interface for managing products and orders.
 
-## Available Scripts
+## Getting Started
+### Prerequisites
+To run the Lojja API, you will need the following software installed on your machine:
 
-In the project directory, you can run:
+* Node.js (version 14 or later)
+* MongoDB
 
-### `npm run dev`
+### Running the API
+1. Install dependencies:
+```bash
+npm install
+```
 
-To start the app in dev mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Set up environment variables:
+Create a .env file in the root of the project directory and add the following environment variables:
+```bash
+MONGO_URL=<your MongoDB connection string>
+MONGO_DB=<your MongoDB database name>
+JWT_SECRET_KEY=<your JWT secret>
+```
 
-### `npm start`
+3. Start the API:
+```bash
+npm run dev
+```
 
-For production mode
+4. Open the GraphQL Playground at http://localhost:3000/graphiql
 
-### `npm run test`
-
-Run the test cases.
-
-## Learn More
-
-To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
+## Testing
+To run the test suite, run the following command:
+```bash
+npm run test
+```

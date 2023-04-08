@@ -16,17 +16,10 @@ Users can browse products and add them to their cart, and can choose to pay in f
 In the `/admin` section, admins can add, edit, and delete products, as well as view and update order statuses. This section of the store is only accessible to users with admin privileges.
 
 ## Installation
-To run the Lojja project, clone this repository to your local machine and run the following commands in separate terminals:   
-```bash
-cd api
-npm install
-npm start
-```
-```bash
-cd store
-npm install
-npm start
-```
+To run the Lojja project, clone this repository to your local machine and follow the instructions for each project.
+
+* [Back-End API](/api/README.md)
+* [Front-End Store](/store/README.md)
 
 ## Contributing
 This project is a code challenge and is not currently accepting contributions. However, if you find a bug or have a suggestion for improvement, please feel free to open an issue.
