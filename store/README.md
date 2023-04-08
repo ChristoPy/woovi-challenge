@@ -1,5 +1,5 @@
 # Lojja Store
-Lojja Store is the front-end component of the Lojja e-commerce project. It provides a user interface that allows users to browse products, add them to their cart, and purchase them using the PIX payment method.
+Lojja Store is the front-end component of the Lojja e-commerce project. It provides a user interface that allows users to browse products, add them to their cart, and purchase them using the PIX payment method. It also provides an admin interface for managing products and orders at `/admin`.
 
 ## Getting Started
 ### Prerequisites
