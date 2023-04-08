@@ -15,6 +15,60 @@ Users can browse products and add them to their cart, and can choose to pay in f
 
 In the `/admin` section, admins can add, edit, and delete products, as well as view and update order statuses. This section of the store is only accessible to users with admin privileges.
 
+## Schema
+The current GraphQL schema:
+  
+```graphql
+directive @auth(
+  requires: Role = BUSINESS,
+) on OBJECT | FIELD_DEFINITION
+
+enum Role {
+  BUSINESS
+  VISITOR
+}
+
+scalar BigInt
+
+enum Category {
+  ELECTRONICS
+  FASHION
+  HOME
+  GROCERY
+  SPORTS
+  TOYS
+  BOOKS
+  OTHER
+}
+
+type Product {
+  _id: ID!
+  name: String!
+  price: Int!
+  description: String!
+  category: Category!
+  images: [String!]!
+  createdAt: BigInt!
+  updatedAt: BigInt
+  quantity: Int!
+}
+
+type Query {
+  products: [Product!]!
+  product(_id: String!): Product
+  productsByCategory(category: Category!): [Product]!
+}
+
+type Mutation {
+  createProduct(name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
+  updateProduct(_id: String!, name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
+  deleteProduct(_id: String!): Product @auth(requires: USER)
+}
+```
+
+This schema can be found at [/api/src/data/schema/index.ts](/api/src/data/schema/index.ts).
+While epresenting all current possibilities with the Front-End only being allowed to read data from the API. The Admin interface is able to create, update and delete products.
+
 ## Installation
 To run the Lojja project, clone this repository to your local machine and follow the instructions for each project.
 
