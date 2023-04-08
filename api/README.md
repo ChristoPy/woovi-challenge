@@ -7,6 +7,13 @@ To run the Lojja API, you will need the following software installed on your mac
 
 * Node.js (version 14 or later)
 * MongoDB
+* Docker (optional)
+
+### Running the Database
+1. Setup MongoDB
+```bash
+docker run --name lojja-mongo -d -p 27017:27017 mongo
+```
 
 ### Running the API
 1. Install dependencies:
