@@ -12,7 +12,7 @@ test('does not delete a product', async (t) => {
 
 test('deletes a product', async (t) => {
   const param = {
-    name: 'Test Product Creation',
+    name: 'Test Product Creation for Deletion',
     price: 100,
     description: 'Test Description',
     category: 'ELECTRONICS',
@@ -22,7 +22,8 @@ test('deletes a product', async (t) => {
   const product = await createProduct({}, param)
   const result = await deleteProduct({}, {_id: product._id.toString()})
 
-  db.close()
-  t.same(result?._id, product._id)
+  t.same(result?._id.toString(), product._id.toString())
   t.pass()
+
+  db.close()
 })

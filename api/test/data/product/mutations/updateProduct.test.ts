@@ -22,7 +22,7 @@ test('does not update a product', async (t) => {
 
 test('deletes a product', async (t) => {
   const param = {
-    name: 'Test Product Update',
+    name: 'Test Product to Update',
     price: 100,
     description: 'Test Description',
     category: 'ELECTRONICS',
@@ -32,7 +32,9 @@ test('deletes a product', async (t) => {
   const product = await createProduct({}, param)
   const result = await updateProduct({}, {...product.toObject(), name: 'New Name'})
 
-  db.close()
   t.same(result?.name, 'New Name')
   t.pass()
+
+  await product.deleteOne()
+  db.close()
 })

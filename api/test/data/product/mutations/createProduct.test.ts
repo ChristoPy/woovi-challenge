@@ -14,7 +14,9 @@ test('creates a product', async (t) => {
   } as ProductParams
   const result = await createProduct({}, param)
 
-  db.close()
   t.same(result.name, param.name)
   t.pass()
+
+  await result.deleteOne()
+  db.close()
 })
