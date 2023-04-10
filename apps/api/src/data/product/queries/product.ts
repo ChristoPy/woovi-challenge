@@ -1,6 +1,5 @@
-import { Product } from "data/model/product";
 import { ProductModel } from "../model";
 
-export const product = async (_: any, { _id }: Product) => {
+export const product = async (_: any, { _id }: { _id: string }) => {
   return ProductModel.findById(_id)
 };
