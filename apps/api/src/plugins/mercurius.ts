@@ -5,6 +5,7 @@ import mercuriusAuth from 'mercurius-auth'
 import schema from '../data/schema'
 import * as productQueries from '../data/product/queries'
 import * as productMutations from '../data/product/mutations'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
 const resolvers = {
   Query: {
@@ -21,6 +22,19 @@ const resolvers = {
  * @see https://github.com/mercurius-js/mercurius
  */
 export default fp<MercuriusOptions>(async (fastify) => {
+  const applyCORSHeaders = (request: FastifyRequest, reply: FastifyReply) => {
+    reply.header('Access-Control-Allow-Origin', '*')
+    reply.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    reply.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  }
+  fastify.addHook('onRequest', (request, reply, done) => {
+    applyCORSHeaders(request, reply)
+    done()
+  })
+  fastify.options('/graphql', (request, reply) => {
+    applyCORSHeaders(request, reply)
+    reply.send()
+  })
 
   fastify.register(mercurius, {
     schema,
