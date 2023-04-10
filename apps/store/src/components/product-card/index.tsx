@@ -1,20 +1,9 @@
 import { MouseEvent, useContext } from "react"
 import { Link } from "react-router-dom"
+import { Product } from 'data/model/product';
 import { StoreContext } from "../../providers/store"
 import { formatMoney } from "../../core/currency"
 import Button from "../button"
-
-export interface Product {
-  _id: string
-  name: string
-  price: number
-  description: string
-  category: string
-  images: string[]
-  createdAt: number
-  updatedAt: number
-  quantity: number
-}
 
 interface ProductCardParams {
   product: Product

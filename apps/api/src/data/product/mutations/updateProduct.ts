@@ -1,4 +1,5 @@
-import { ProductModel, Product } from "../model";
+import { Product } from "data/model/product";
+import { ProductModel } from "../model";
 
 export const updateProduct = async (_: any, data: Product) => {
   const product = await ProductModel.findById(data._id)

@@ -1,14 +1,4 @@
-export interface Product {
-  _id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-  images: string[];
-  createdAt: number;
-  updatedAt?: number;
-  quantity: number;
-}
+import { Product } from 'data/model/product';
 
 export interface ShoppingCartItem {
   productId: string;

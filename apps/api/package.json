@@ -26,7 +26,8 @@
     "jsonwebtoken": "^9.0.0",
     "mercurius": "^12.2.0",
     "mercurius-auth": "^4.0.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "data": "*"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",

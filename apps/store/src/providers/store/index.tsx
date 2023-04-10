@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
-import { Store, Product, ShoppingCartItem } from '../../data/store';
+import { Store, ShoppingCartItem } from '../../data/store';
+import { Product } from 'data/model/product';
 
 interface StoreContextValue {
   store: Store;

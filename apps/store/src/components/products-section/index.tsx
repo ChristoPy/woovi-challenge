@@ -1,7 +1,7 @@
 import { OperationType, graphql } from "relay-runtime"
 import ProductCard from "../product-card"
 import { useLazyLoadQuery } from "react-relay"
-import { Product } from "../product-card/index"
+import { Product } from 'data/model/product';
 import { useContext, useEffect, useState } from "react"
 import { useTransition, animated } from 'react-spring'
 import Loading from "../loading"
