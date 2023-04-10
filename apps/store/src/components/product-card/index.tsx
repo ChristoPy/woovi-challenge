@@ -1,4 +1,5 @@
 import { MouseEvent, useContext } from "react"
+import { Link } from "react-router-dom"
 import { StoreContext } from "../../providers/store"
 import { formatMoney } from "../../core/currency"
 import Button from "../button"
@@ -29,7 +30,7 @@ export default function ProductCard({ product }: ProductCardParams) {
 
   return (
     <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-      <a href={`/product/${product._id}`}>
+      <Link to={`/produto/${product._id}`}>
         <img className="hover:grow hover:shadow-lg" src={product.images[0]} />
         <div className="pt-3 flex items-center justify-between">
           <p>{product.name}</p>
@@ -50,7 +51,7 @@ export default function ProductCard({ product }: ProductCardParams) {
             )
           }
         </>} />
-      </a>
+      </Link>
     </div>
   )
 }

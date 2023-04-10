@@ -1,10 +1,8 @@
 import { RequestParameters } from 'relay-runtime/lib/util/RelayConcreteNode';
 import { Variables } from 'relay-runtime/lib/util/RelayRuntimeTypes';
 
-const HTTP_ENDPOINT = "/graphql";
-
 export const fetchGraphQL = async (request: RequestParameters, variables: Variables) => {
-  const response = await fetch(HTTP_ENDPOINT, {
+  const response = await fetch(import.meta.env.VITE_GRAPHQL_URL, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

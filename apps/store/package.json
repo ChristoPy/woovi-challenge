@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "lint": "tsc",
     "preview": "vite preview",
     "relay": "relay-compiler"
   },
