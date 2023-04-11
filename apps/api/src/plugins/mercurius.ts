@@ -5,6 +5,7 @@ import mercuriusAuth from 'mercurius-auth'
 import schema from '../data/schema'
 import * as productQueries from '../data/product/queries'
 import * as productMutations from '../data/product/mutations'
+import * as orderMutations from '../data/order/mutations'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 const resolvers = {
@@ -12,7 +13,8 @@ const resolvers = {
     ...productQueries
   },
   Mutation: {
-    ...productMutations
+    ...productMutations,
+    ...orderMutations
   }
 }
 

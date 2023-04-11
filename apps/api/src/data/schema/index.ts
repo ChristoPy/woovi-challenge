@@ -33,6 +33,56 @@ type Product {
   quantity: Int!
 }
 
+input ProductInput {
+  _id: ID!
+  name: String!
+  price: Int!
+  description: String!
+  category: Category!
+  images: [String!]!
+  createdAt: BigInt!
+  updatedAt: BigInt
+  quantity: Int!
+}
+
+type Address {
+  zipcode: String!
+  street: String!
+  number: String!
+  neighborhood: String!
+  city: String!
+  state: String!
+  complement: String
+  country: String!
+}
+
+input AddressInput {
+  zipcode: String!
+  street: String!
+  number: String!
+  neighborhood: String!
+  city: String!
+  state: String!
+  complement: String
+}
+
+type Shopper {
+  name: String!
+  email: String!
+  phone: String!
+  taxID: String!
+  correlationID: String!
+  address: Address!
+}
+
+input ShopperInput {
+  name: String!
+  email: String!
+  phone: String!
+  taxID: String!
+  address: AddressInput!
+}
+
 enum Status {
   CREATED
   PAID
@@ -61,5 +111,6 @@ type Mutation {
   createProduct(name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   updateProduct(_id: String!, name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   deleteProduct(_id: String!): Product @auth(requires: USER)
+  createOrder(shopper: ShopperInput!, products: [ProductInput!]!): Order!
 }
 `
