@@ -1,6 +1,6 @@
 import Header from "../../components/header"
 import Hero from "../../components/hero"
-import ProductsSection from "../../components/products-section"
+import ProductsSection from "../../components/product/products-section"
 
 function Home() {
   return (

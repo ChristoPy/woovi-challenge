@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import Button from '../button';
-import { StoreContext } from '../../providers/store';
-import { ShoppingCartItem } from '../../data/store';
-import { formatMoney } from '../../core/currency';
+import Button from '../../button';
+import { StoreContext } from '../../../providers/store';
+import { ShoppingCartItem } from '../../../data/store';
+import { formatMoney } from '../../../core/currency';
 
 function ProductList() {
   const { store, setQuantity } = useContext(StoreContext);
