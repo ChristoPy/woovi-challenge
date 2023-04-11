@@ -11,10 +11,10 @@ export interface Order {
   total: number;
   createdAt: number;
   updatedAt?: number;
+  processedAt?: number;
 }
 
 export interface OrderParams {
-  status: Status;
   shopper: ShopperParams;
   products: Product[];
 }

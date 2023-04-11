@@ -99,6 +99,7 @@ type Order {
   total: Int!
   createdAt: BigInt!
   updatedAt: BigInt
+  processedAt: BigInt
 }
 
 type Query {

@@ -14,8 +14,7 @@ export const createOrder = async (_: any, data: OrderParams) => {
       }
     },
     total: data.products.reduce((acc, product) => acc + product.price, 0),
-    createdAt: Date.now(),
-    updatedAt: Date.now()
+    createdAt: Date.now()
   });
   await order.save();
 
