@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Product } from 'data/model/product';
 import { formatMoney } from "../../../core/currency"
-import AddToCartButton from "../../add-to-cart-button";
+import AddToCartButton from "../add-to-cart-button";
 
 interface ProductCardParams {
   product: Product

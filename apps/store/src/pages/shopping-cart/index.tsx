@@ -1,11 +1,11 @@
 import Header from "../../components/header"
-import ProductList from "../../components/products-list"
+import ProductsList from "../../components/product/products-list"
 
 function ShoppingCart() {
   return (
     <>
       <Header />
-      <ProductList />
+      <ProductsList />
     </>
   )
 }

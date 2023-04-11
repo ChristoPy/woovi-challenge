@@ -1,7 +1,7 @@
 import { MouseEvent, useContext } from "react"
 import { Product } from 'data/model/product';
-import { StoreContext } from "../../providers/store"
-import Button from "../button"
+import { StoreContext } from "../../../providers/store"
+import Button from "../../button"
 
 interface AddToCartButtonParams {
   product: Product
