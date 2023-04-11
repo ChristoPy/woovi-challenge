@@ -4,8 +4,8 @@ import { useLazyLoadQuery } from "react-relay"
 import { Product } from 'data/model/product';
 import { useContext, useEffect, useState } from "react"
 import { useTransition, animated } from 'react-spring'
-import Loading from "../loading"
-import { StoreContext } from "../../providers/store"
+import Loading from "../../loading"
+import { StoreContext } from "../../../providers/store"
 
 interface ProductsSectionQuery extends OperationType {
   readonly response: ProductsSectionQueryResult;
