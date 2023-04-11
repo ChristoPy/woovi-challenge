@@ -102,6 +102,27 @@ type Order {
   processedAt: BigInt
 }
 
+type FullInstallment {
+  count: Int!
+  fee: Int!
+  total: Int!
+  cashbackPercentage: Int!
+  cashbackValue: Int!
+}
+
+type Installment {
+  count: Int!
+  fee: Int!
+  total: Int!
+}
+
+type PaymentIntent {
+  clientSecret: String!
+  total: Int!
+  full: FullInstallment!
+  installments: [Installment!]
+}
+
 type Query {
   products: [Product!]!
   product(_id: String!): Product
@@ -112,6 +133,6 @@ type Mutation {
   createProduct(name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   updateProduct(_id: String!, name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   deleteProduct(_id: String!): Product @auth(requires: USER)
-  createOrder(shopper: ShopperInput!, products: [ProductInput!]!): Order!
+  createOrder(shopper: ShopperInput!, products: [ProductInput!]!): PaymentIntent!
 }
 `

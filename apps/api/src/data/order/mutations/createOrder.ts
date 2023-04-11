@@ -1,5 +1,6 @@
 import { OrderParams } from "data/model/order";
 import { OrderModel } from "../model";
+import { createPaymentIntent } from "../../../core/paymentIntent";
 
 export const createOrder = async (_: any, data: OrderParams) => {
   const order = new OrderModel({
@@ -18,5 +19,5 @@ export const createOrder = async (_: any, data: OrderParams) => {
   });
   await order.save();
 
-  return order;
+  return createPaymentIntent(order.total, order._id.toString());
 };
