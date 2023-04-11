@@ -9,4 +9,5 @@ export interface Order {
   products: Product[];
   total: number;
   createdAt: number;
+  updatedAt?: number;
 }

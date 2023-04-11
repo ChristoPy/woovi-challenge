@@ -33,6 +33,24 @@ type Product {
   quantity: Int!
 }
 
+enum Status {
+  CREATED
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELED
+}
+
+type Order {
+  _id: ID!
+  status: Status!
+  shopper: String!
+  products: [Product!]!
+  total: Int!
+  createdAt: BigInt!
+  updatedAt: BigInt
+}
+
 type Query {
   products: [Product!]!
   product(_id: String!): Product
