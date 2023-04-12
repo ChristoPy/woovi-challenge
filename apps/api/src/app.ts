@@ -2,6 +2,7 @@ import { join } from 'path';
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload';
 import { FastifyPluginAsync } from 'fastify';
 import './database';
+import cache from './cache';
 
 export type AppOptions = {
   // Place your custom options for app below here.
@@ -17,6 +18,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
   opts
 ): Promise<void> => {
   // Place here your custom code!
+  await cache.connect();
 
   // Do not touch the following lines
 
