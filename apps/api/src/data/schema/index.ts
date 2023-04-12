@@ -123,6 +123,13 @@ type PaymentIntent {
   installments: [Installment!]
 }
 
+type Charge {
+  _id: String!
+  qrCode: String!
+  brCode: String!
+  expiresAt: String!
+}
+
 type Query {
   products: [Product!]!
   product(_id: String!): Product
@@ -134,5 +141,6 @@ type Mutation {
   updateProduct(_id: String!, name: String!, price: Int!, description: String!, category: Category!, images: [String!]!, quantity: Int!): Product! @auth(requires: USER)
   deleteProduct(_id: String!): Product @auth(requires: USER)
   createOrder(shopper: ShopperInput!, products: [ProductInput!]!): PaymentIntent!
+  chooseInstallment(secret: String!, count: Int!): Charge
 }
 `

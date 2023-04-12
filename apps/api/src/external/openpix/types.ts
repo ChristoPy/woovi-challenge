@@ -1,27 +1,21 @@
-import { Address } from "data";
+import { Address, Shopper } from "data";
 
 export interface Charge {
-  id: string
+  _id: string
   qrCode: string
   brCode: string
-  expiresAt: string
+  expiresAt: number
+  value: number
 }
 
 export interface OpenPIXCreateChargeParams {
   correlationID: string;
   value: number;
   // type: string;
-  comment: string;
-  identifier: string;
-  expiresIn: number;
-  customer: {
-    name: string;
-    email: string;
-    phone: string;
-    taxID: string;
-    correlationID: string;
-    address: Address
-  };
+  // comment: string;
+  // identifier: string;
+  // expiresIn: number;
+  customer: Shopper;
 }
 
 export interface OpenPIXCreateChargeResponse {

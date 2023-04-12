@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { OpenPIXCreateChargeParams } from "./types";
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { OpenPIXCreateChargeParams, OpenPIXCreateChargeResponse } from "./types";
 
 const API_KEY = process.env.OPENPIX_API_KEY as string;
 const BASE_URL = process.env.OPENPIX_API_BASE_URL as string;
@@ -13,18 +13,18 @@ const BASE_CONFIG = {
   },
 };
 
-function makeRequest(config: AxiosRequestConfig) {
-  return axios.request({
+function makeRequest<T>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  return axios.request<T>({
     ...BASE_CONFIG,
     ...config,
     url: BASE_URL + config.url
   })
 }
 
-export function createCharge(chargeParams: OpenPIXCreateChargeParams) {
-  return makeRequest({
+export function createCharge(chargeParams: OpenPIXCreateChargeParams): Promise<AxiosResponse<OpenPIXCreateChargeResponse>> {
+  return makeRequest<OpenPIXCreateChargeResponse>({
     url: '/charge?return_existing=true',
     method: 'POST',
     data: chargeParams
-  })
+  });
 }
