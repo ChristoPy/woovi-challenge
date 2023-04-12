@@ -20,6 +20,7 @@
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
+    "data": "*",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
@@ -27,7 +28,7 @@
     "mercurius": "^12.2.0",
     "mercurius-auth": "^4.0.0",
     "mongoose": "^7.0.3",
-    "data": "*"
+    "redis": "^4.6.5"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",

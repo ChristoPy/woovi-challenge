@@ -1,14 +1,14 @@
 import fp from 'fastify-plugin'
-import db from '../database'
+import redis from '../cache'
 
 /**
- * This plugin gracefully closes the database connection
+ * This plugin gracefully closes the redis connection
  * when the server gets closed.
  * 
  */
 export default fp(async (fastify) => {
   fastify.addHook('onClose', async (_, done) => {
-    await db.close()
+    await redis.quit()
     done()
   })
 })
