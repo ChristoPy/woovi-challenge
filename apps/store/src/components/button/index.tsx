@@ -2,7 +2,7 @@ import { MouseEvent } from "react";
 
 export interface ButtonProps {
   text: string;
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   iconRight?: JSX.Element;
   full?: boolean;
 }

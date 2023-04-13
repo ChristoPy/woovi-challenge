@@ -3,6 +3,7 @@ import Button from '../../button';
 import { StoreContext } from '../../../providers/store';
 import { ShoppingCartItem } from '../../../data/store';
 import { formatMoney } from '../../../core/currency';
+import { Link } from 'react-router-dom';
 
 function ProductList() {
   const { store, setQuantity } = useContext(StoreContext);
@@ -58,6 +59,11 @@ function ProductList() {
         </ul>
         <div className="flex justify-end items-center mt-4">
           <p className="text-2xl font-bold">Total: {formatMoney(total)}</p>
+        </div>
+        <div className="flex justify-end items-center mt-4">
+          <Link to="/pagamento">
+            <Button text="Comprar Agora" />
+          </Link>
         </div>
       </div>
     </section>

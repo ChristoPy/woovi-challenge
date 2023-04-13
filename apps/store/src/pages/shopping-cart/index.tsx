@@ -4,7 +4,7 @@ import ProductsList from "../../components/product/products-list"
 function ShoppingCart() {
   return (
     <>
-      <Header />
+      <Header noCartIcon/>
       <ProductsList />
     </>
   )

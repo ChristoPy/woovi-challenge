@@ -64,17 +64,17 @@ function ProductInfo() {
             </animated.div>
           ) : (
             <div className="container mx-auto grid gap-4 md:grid-cols-2">
-          <div className="flex items-center justify-center">
-            <ProductImage name={product?.name} images={product?.images} />
-          </div>
-          <div className="flex flex-col justify-center">
-            <h1 className="text-black text-2xl">{product.name}</h1>
-            <p className="mb-8 text-2xl font-bold">{formatMoney(product.price)}</p>
-            <p className="pb-3 text-gray-900">{product.description}</p>
+              <div className="flex items-center justify-center">
+                <ProductImage name={product?.name} images={product?.images} />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h1 className="text-black text-2xl">{product.name}</h1>
+                <p className="mb-8 text-2xl font-bold">{formatMoney(product.price)}</p>
+                <p className="pb-3 text-gray-900">{product.description}</p>
 
-            <AddToCartButton product={product!} />
-          </div>
-        </div>
+                <AddToCartButton product={product!} />
+              </div>
+            </div>
           ))
         }
       </div>
