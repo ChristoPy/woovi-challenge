@@ -3,7 +3,7 @@ import Badge from "./badge";
 
 export default function Header() {
   return (
-    <nav className="w-full z-30 top-0 py-1">
+    <nav className="fixed w-full z-30 top-0 py-1 bg-white">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
 
         <div className="order-1 md:order-2">

@@ -7,6 +7,7 @@ import { Product } from "data/model/product";
 import { useTransition, animated } from "react-spring";
 import Loading from "../../loading";
 import { formatMoney } from "../../../core/currency";
+import ProductImage from "../product-image";
 
 interface ProductInfoQuery extends OperationType {
   readonly response: ProductInfoQueryResult;
@@ -64,12 +65,7 @@ function ProductInfo() {
           ) : (
             <div className="container mx-auto grid gap-4 md:grid-cols-2">
           <div className="flex items-center justify-center">
-            <img
-              className="object-cover w-full hover:grow hover:shadow-lg"
-              src={product?.images[0]}
-              style={{ maxHeight: '336px', maxWidth: '336px' }}
-              alt={product?.name}
-            />
+            <ProductImage name={product?.name} images={product?.images} />
           </div>
           <div className="flex flex-col justify-center">
             <h1 className="text-black text-2xl">{product.name}</h1>

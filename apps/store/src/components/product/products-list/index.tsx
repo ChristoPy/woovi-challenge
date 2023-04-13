@@ -25,7 +25,7 @@ function ProductList() {
   }, [store.shoppingCart.items]);
 
   return (
-    <section className="py-8 px-4">
+    <section className="py-8 mt-12 px-4">
       <div className="container mx-auto">
         <h1 className="text-black text-2xl my-4 mb-4">Carrinho</h1>
         <ul className="grid gap-4">
