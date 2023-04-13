@@ -18,3 +18,8 @@ export interface OrderParams {
   shopper: ShopperParams;
   products: Product[];
 }
+
+export interface ChooseInstallmentParams {
+  secret: string;
+  count: number;
+}
